@@ -9,14 +9,14 @@ Startet PostgreSQL 17 in einem Container (Podman oder Docker) und lädt zwei Bei
 
 ## Voraussetzungen
 
-- Podman (empfohlen, läuft ohne Root) oder Docker
-- `git` (zum einmaligen Herunterladen von Pagila)
+- Podman (empfohlen) oder Docker (Kann eigene Konfiguration und Änderungen am skript benötigen)
+- `git` (zum einmaligen Herunterladen von Pagila, sollte aber bereits installiert sein wenn der code runtergeladen wird ;))
 - Linux, macOS (Podman/Docker Desktop) oder WSL
 
 ## Start
 
 ```bash
-git clone <dieses-repo> && cd sqlpractice
+git clone https://github.com/Sandpit0/datenbanken_uebungen.git && cd datenbanken_uebungen
 ./sqlpractice.sh
 ```
 
@@ -57,12 +57,3 @@ Alles komplett entfernen:
 podman rm -f sqlpractice && podman volume rm sqlpractice-pgdata
 rm -rf ~/.config/sqlpractice ~/.cache/sqlpractice
 ```
-
-## Sicherheit
-
-- Der Port ist nur auf `127.0.0.1` freigegeben, die Datenbank ist also nur vom eigenen Rechner
-  erreichbar und nicht im WLAN.
-- Das Passwort wird pro Rechner zufällig erzeugt und hat nur für den Besitzer Leserechte (`600`).
-- Pagila ist auf einen festen Commit gepinnt, weil das SQL als Superuser ausgeführt wird.
-- Es wird der Superuser `postgres` benutzt. Für eine lokale Übungsumgebung ist das in Ordnung.
-  Nicht für echte Daten verwenden und nicht auf einem Server betreiben.
